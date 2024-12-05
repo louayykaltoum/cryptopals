@@ -340,11 +340,13 @@ def scoring(s):
 def xor(s1 , c):
     return ''.join([chr(i ^ c ) for i in s1])
 
-best = []
+def crack_single_byte_xor(l):
+    best = []
+    for line in l:
+        s1 = bytes.fromhex(line)
+        temp = [ xor(s1 , i) for i in range(256)]
+        best.append(max(temp , key = scoring))
+    return best
 
-for line in l:
-    s1 = bytes.fromhex(line)
-    temp = [ xor(s1 , i) for i in range(256)]
-    best.append(max(temp , key = scoring))
-
+best = crack_single_byte_xor(l)
 print(max(best , key = scoring))
