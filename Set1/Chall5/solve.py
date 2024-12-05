@@ -1,10 +1,14 @@
 
 from pwn import *
 
-s1 = "Burning 'em, if you ain't quick and nimble"
-s2 = "I go crazy when I hear a cymbal"
+s1 = """Burning 'em, if you ain't quick and nimble\nI go crazy when I hear a cymbal"""
 
 key = 'ICE'
 
-print(xor(s1, key).hex())
-print(xor(s2, key).hex())
+def xor_with_repeating_key(s,key):
+    output = ''
+    for i in range(len(s)):
+        output += chr(ord(s[i]) ^ ord(key[i % len(key)]))
+    return output
+
+print(xor_with_repeating_key(s1,key).encode().hex())

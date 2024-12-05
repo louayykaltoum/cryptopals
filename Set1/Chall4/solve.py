@@ -335,7 +335,7 @@ l = s.split("\n")
 
 
 def scoring(s):
-    return sum([1 for i in s if i.upper() in string.ascii_uppercase])
+    return sum([1 for i in s if i.upper() in 'ETAOIN SHRDLU'])
 
 def xor(s1 , c):
     return ''.join([chr(i ^ c ) for i in s1])
