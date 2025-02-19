@@ -55,7 +55,7 @@ blocksize, to_guess = detect_blocksize()
 mode = detect_mode(blocksize)
 print(f'{blocksize = }')
 print(f'{mode = }')
-print(f'bytes to guess: {to_guess}')
+print(f'bytes to guess: {to_guess }')
 print('Guessed text:\n')
 
 
